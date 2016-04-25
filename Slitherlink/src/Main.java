@@ -1,14 +1,18 @@
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Scanner;
+import java.util.StringJoiner;
 
 public class Main {
 	public static int WIDTH;
 	public static int HEIGHT;
 	static  int [][]val;
-	public static void main(String[] args) {
-		Path filePath = Paths.get("input/problem/5x5.txt");
+	/*input : file matrix
+	* output : string satSolver, write to file result
+	* */
+	public static String solve (String input) throws IOException {
+		Path filePath = Paths.get(input);
 		Scanner scanner = null;
 		try {
 			scanner = new Scanner(filePath);
@@ -31,13 +35,13 @@ public class Main {
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
-        }
+		}
 		WriteToCNF writeToCNF = new WriteToCNF(val);
 		String satSolver = SatSolver.solve("input/cnf/input.cnf");
-		System.out.println(satSolver);
-//        while ( check() false) {
-//            Reload;// wrtire satsolver .
-//            satSolver // get new satsolver
-//        }
+		return  satSolver;
+	}
+	public static void main(String[] args) throws IOException {
+		String result = Main.solve("input/problem/5x5.txt");
+		System.out.print(result);
 	}
 }

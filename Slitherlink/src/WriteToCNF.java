@@ -8,7 +8,10 @@ import java.util.ArrayList;
  * Created by trong on 4/1/2016.
  */
 public class WriteToCNF {
-
+	/*
+	* input val[][] : matrix input
+	* output : write to cnf file
+	* */
 	public WriteToCNF (int val[][]) {
 		int w = Main.WIDTH;
 		int h = Main.HEIGHT;

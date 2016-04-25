@@ -7,13 +7,17 @@ import org.sat4j.specs.IProblem;
 import org.sat4j.specs.ISolver;
 import org.sat4j.specs.TimeoutException;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 
 /**
  * Created by trong on 2/29/2016.
  */
 public class SatSolver {
+	/*
+	* use code on http://www.sat4j.org/howto.php
+	* input :a file cnf
+	* output : string resultdecode;
+	* */
 	public static String solve (String url){
         String resultDecode ="";
         ISolver solver = SolverFactory.newDefault();
@@ -24,11 +28,18 @@ public class SatSolver {
 			if (problem.isSatisfiable()) {
 				System.out.println("Satisfiable !");
 				resultDecode = reader.decode(problem.model());
-
-//                System.out.println(reader.decode(problem.model()));
+				File file = new File("input/result/result.txt");
+				if (!file.exists()) {
+					file.createNewFile();
+				}
+				FileWriter fw = new FileWriter(file.getAbsoluteFile());
+				BufferedWriter bw = new BufferedWriter(fw);
+				bw.write(resultDecode);
+				bw.close();
 
 			} else {
 				System.out.println("Unsatisfiable !");
+				resultDecode = "Cannot solve this problem !";
             }
 		} catch (FileNotFoundException e) {
             // TODO Auto-generated catch block

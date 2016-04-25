@@ -46,9 +46,7 @@ public class SatEncode {
 	}
 	public void encode () {
 		encodeText = new ArrayList<String>();
-
 		//encode law 1
-
 		for (int i = 0; i < h; i++) {
 			for (int j = 0; j < w; j++) {
 				switch (val[i][j]) {
@@ -77,7 +75,7 @@ public class SatEncode {
 						encodeText.add("-" + right(i,j)+ " -" + left(i,j)+ " -" +down(i,j));
 						encodeText.add("-" + up(i,j)+ " -" + left(i,j) + " -" + down(i,j));
 						break;
-                    case 3 :
+					case 3 :
 						encodeText.add("-" + up(i,j) + " -" + down(i,j)+ " -" + left(i,j)+ " -" + right(i, j));
 						encodeText.add(right(i,j) + " " + up(i,j));
 						encodeText.add(right(i,j) + " " + left(i,j));
@@ -90,6 +88,7 @@ public class SatEncode {
 			}
 		}
 		//encode law 2
+
 		for (int i = 1; i < w; i++) {
 			for (int j = 1; j < h; j++) {
 					encodeText.add("-" + edgeRight(i,j) + " "+edgeUp(i,j) +" " + edgeLeft(i,j) + " " + edgeDown(i,j));
@@ -103,6 +102,7 @@ public class SatEncode {
 					encodeText.add("-" + edgeUp(i,j) + " -" + edgeLeft(i,j) + " -" + edgeDown(i,j) );
 			}
 		}
+
 		encodeText.add(edgeRight(0,0) + " -" + edgeDown(0,0));
 		encodeText.add("-" + edgeRight(0,0) + edgeDown(0,0));
 
@@ -116,6 +116,7 @@ public class SatEncode {
 		encodeText.add(" -" + edgeUp(h,w) + edgeLeft(h,w));
 
 		for (int j = 1; j < w; j++) {
+
 			//0,j right left down
 			encodeText.add("-" + edgeRight(0,j) + " " + edgeLeft(0,j) + " " + edgeDown(0,j));
 			encodeText.add("-" + edgeRight(0,j) + " -" + edgeLeft(0,j) + " -"+ edgeDown(0,j));
@@ -127,8 +128,10 @@ public class SatEncode {
 			encodeText.add("-" + edgeRight(h,j) + " -" + edgeUp(h,j) + " -" + edgeLeft(h,j));
 			encodeText.add(edgeRight(h,j) + " -" + edgeUp(h,j) + " " + edgeLeft(h,j));
 			encodeText.add(edgeRight(h,j) + " " + edgeUp(h,j) + " -" + edgeLeft(h,j));
+
 		}
 		for (int i = 1; i < h; i++) {
+
 			//i,0
 			encodeText.add("-" + edgeRight(i,0) + " " + edgeUp(i,0) + " " + edgeDown(i,0));
 			encodeText.add("-" + edgeRight(i,0) + " -" + edgeUp(i,0) + " -"+ edgeDown(i,0));
@@ -140,7 +143,7 @@ public class SatEncode {
 			encodeText.add("-" + edgeUp(i,w) + " -" + edgeLeft(i,w) + " -"+ edgeDown(i,w));
 			encodeText.add(edgeUp(i,w) + " -" + edgeLeft(i,w) + " "+ edgeDown(i,w));
 			encodeText.add(edgeUp(i,w) + " " + edgeLeft(i,w) + " -"+ edgeDown(i,w));
+
 		}
 	}
-
 }
