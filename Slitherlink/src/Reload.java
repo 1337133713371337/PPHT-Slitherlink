@@ -10,11 +10,7 @@ import java.util.Scanner;
  * Created by trong on 4/24/2016.
  */
 public class Reload {
-    /*
-    * input : result in result.txt
-    * output : String nOldResult - negative oldresult.
-    * */
-	private static String negaResult () {
+	public static ArrayList<Integer> readResult () {
 		ArrayList<Integer> oldResult = new ArrayList<>();
 		Path filePath = Paths.get("input/result/result.txt");
 		Scanner scanner = null;
@@ -33,6 +29,14 @@ public class Reload {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		return oldResult;
+	}
+    /*
+    * input : result in result.txt
+    * output : String nOldResult - negative oldresult.
+    * */
+	private static String negaResult () {
+		ArrayList<Integer> oldResult = Reload.readResult();
 		String nOldResult = "";
 		for (int i = 0; i < oldResult.size()-1; i++) {
 			nOldResult += (oldResult.get(i)*-1) + " ";
@@ -83,6 +87,6 @@ public class Reload {
 		return satSolver;
 	}
 	public static void main (String []args) throws IOException {
-		System.out.print(Reload.reload());
+            System.out.print(Reload.reload());
 	}
 }
